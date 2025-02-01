@@ -1,182 +1,175 @@
-# backend
 # Django Multi-Language FAQ API with WYSIWYG Editor
 
-# Overview
+## Overview
+This project is a Django-based application designed to manage **Frequently Asked Questions (FAQs)** in multiple languages. It integrates a **WYSIWYG (What You See Is What You Get)** editor for rich-text formatting in FAQ answers, powered by **django-ckeditor**. The application also features **Google Translate** integration via `googletrans` for automatic translation of FAQ content into multiple languages. The project is containerized using **Docker** for seamless deployment and scaling.
 
-This project is a Django-based application that allows users to manage frequently asked questions (FAQs) with multi-language support and WYSIWYG (What You See Is What You Get) editor integration. It uses the django-ckeditor for rich-text formatting and googletrans for translating FAQ content to multiple languages. Additionally, this project is containerized with Docker for easy deployment.
+## Key Features
+Multi-language support** for FAQs, allowing dynamic translation of content.
+- **WYSIWYG Editor** for FAQ answers, enabling rich-text formatting.
+- **Efficient API** to fetch FAQs in different languages.
+- **Caching with Redis** to improve translation data retrieval.
+- **Dockerized Application** for easy deployment.
+  
+## Technologies Used
+- **Backend**: Django
+- **Database**: SQLite (easily replaceable with PostgreSQL in production)
+- **Frontend**: Django Admin Interface, CKEditor
+- **Cache**: Redis
+- **Translation**: `googletrans` (Google Translate API)
+- **Containerization**: Docker
+- **Version Control**: Git
+- **API**: REST API for managing FAQs
 
-# Key Features
+---
 
-Multi-language FAQ support with dynamic translations.
-WYSIWYG editor for rich-text content in FAQ answers.
-Efficient FAQ retrieval via REST API with language selection.
-Integrated caching mechanism using Redis for translation data.
-Docker support for easy containerization and deployment.
-Technologies Used
-Backend: Django
-Database: SQLite (can be replaced with PostgreSQL in production)
-Frontend: Django Admin Interface, CKEditor
-Cache: Redis
-Translation: googletrans (Google Translate API)
-Containerization: Docker
-API: REST API for managing FAQs
-Version Control: Git
-Installation Steps
+## Installation Steps
 
-# 1. Clone the Repository
-First, clone the repository to your local machine:
+### 1. Clone the Repository
+Clone the repository to your local machine:
 
-bash
-Copy
-Edit
-
+```bash
 git clone https://github.com/your-username/faq-multilingual-django.git
 cd faq-multilingual-django
 
 # 2. Set Up Virtual Environment (Optional)
-Create and activate a Python virtual environment for better dependency management.
+For managing dependencies, it is recommended to set up a Python virtual environment.
+
+For Windows:
 
 bash
 Copy
 Edit
-
-# For Windows#
 python -m venv venv
 venv\Scripts\activate
+For macOS/Linux:
 
-# For macOS/Linux
+bash
+Copy
+Edit
 python3 -m venv venv
 source venv/bin/activate
 3. Install Dependencies
-Install the required Python dependencies using pip.
+Install the required Python packages listed in requirements.txt:
 
 bash
 Copy
 Edit
 pip install -r requirements.txt
+4. Apply Migrations
+Set up the database by applying the migrations:
 
-# 4. Apply Migrations
-Run migrations to set up the database.
 bash
 Copy
 Edit
 python manage.py migrate
+5. Set Up Static and Media Files
+Collect all static files and set up the media directory:
 
-# 5. Set Up Static and Media Files
-Collect static files and set up media directory.
 bash
 Copy
 Edit
 python manage.py collectstatic
+6. Run the Development Server
+Start the development server to run the application locally:
 
-# 6. Run the Development Server
-Start the development server to test the app locally.
 bash
 Copy
 Edit
 python manage.py runserver
 Visit http://127.0.0.1:8000 to view the app.
 
-# Running with Docker
+Running with Docker
+1. Build the Docker Image
+Use Docker Compose to build the Docker image for the application:
 
-# 1. Build the Docker Image
-   
-Build the Docker image using Docker Compose.
 bash
 Copy
 Edit
 docker-compose build
+2. Start the Docker Container
+Run the container and start the application:
 
-# 2. Start the Docker Container
-   
-Run the container and start the application.
 bash
 Copy
 Edit
 docker-compose up
-This will start the application in a container, and you can access it at http://localhost:8000.
+You can access the application at http://localhost:8000.
 
-# 3. Stopping the Docker Container
-   
-When you're done, you can stop the container with:
+3. Stopping the Docker Container
+To stop the running container:
+
 bash
 Copy
 Edit
 docker-compose down
 API Usage
-The application exposes a REST API to manage FAQs. You can interact with the API using curl, Postman, or any HTTP client.
+The application provides a REST API to manage FAQs. You can interact with the API using curl, Postman, or any HTTP client.
 
-# Fetch All FAQs (Default Language - English)
-   
+1. Fetch All FAQs (Default Language - English)
 bash
 Copy
 Edit
 curl http://localhost:8000/api/faqs/
-
-# Fetch FAQs in Hindi
+2. Fetch FAQs in Hindi
 bash
 Copy
 Edit
 curl http://localhost:8000/api/faqs/?lang=hi
-
-# Fetch FAQs in Bengali
+3. Fetch FAQs in Bengali
 bash
 Copy
 Edit
 curl http://localhost:8000/api/faqs/?lang=bn
-
-# Add a New FAQ
+4. Add a New FAQ
 To add a new FAQ, make a POST request to the /api/faqs/ endpoint with the following data:
+
 json
 Copy
 Edit
-
 {
   "question": "What is Docker?",
   "answer": "<p>Docker is a platform for developing, shipping, and running applications.</p>",
   "question_hi": "डॉकर क्या है?",
   "question_bn": "ডকার কি?"
 }
+Admin Panel
+The Django admin interface allows you to manage FAQs easily.
 
-# Admin Panel
+1. Access the Admin Panel
+Navigate to http://127.0.0.1:8000/admin to log in with your superuser credentials.
 
-# The Django admin panel allows you to manage the FAQs easily.
+2. Create a Superuser (If not created)
+To create a superuser account for accessing the admin panel, run the following:
 
-# Access the Admin Panel
-To access the Django admin panel, navigate to http://127.0.0.1:8000/admin and log in with the superuser credentials.
-
-#  Create a Superuser (If not created)
-If you haven't created a superuser, run:
 bash
 Copy
 Edit
 python manage.py createsuperuser
-Follow the prompts to set up a superuser.
+Follow the prompts to set up your superuser account.
 
-# Caching Mechanism
-The application uses Redis to cache translations. This improves performance when multiple users request the same FAQ in different languages.
+Caching Mechanism
+The application utilizes Redis to cache translations, improving performance by reducing the need to repeatedly request translations from the API.
 
-# 1. Install Redis
-If running locally (without Docker), you need to have Redis installed. Download Redis and start the Redis server.
-Alternatively, Redis can be run inside a Docker container:
+1. Install Redis
+If you're running Redis locally, install and start the Redis server. Alternatively, you can run Redis within a Docker container:
+
 bash
 Copy
 Edit
 docker run -p 6379:6379 redis
 Testing
-The project includes unit tests for API functionality and model methods.
+The project includes unit tests to verify the functionality of the API and model methods.
 
-# 2. Run Unit Tests
-   
-Run the tests with:
+1. Run Unit Tests
+Run the tests using pytest:
+
 bash
 Copy
 Edit
 pytest
+2. Check Code Quality
+The code adheres to PEP8 conventions. You can check the code quality with flake8:
 
-# 3. Check for Code Quality
-   
-The project follows PEP8 conventions. Use flake8 to check the code quality:
 bash
 Copy
 Edit
@@ -184,20 +177,12 @@ flake8 .
 Contributing
 We welcome contributions to this project! Here's how you can contribute:
 
-# Fork the repository.
-
+Fork the repository.
 Create a new branch for your feature or bugfix.
-
 Make your changes and commit them with clear, concise messages.
-
 Push your changes to your fork.
-
 Open a pull request.
-
 Commit Message Guidelines
-
 feat: Add multilingual FAQ model
-
 fix: Improve translation caching
-
 docs: Update README with API examples
