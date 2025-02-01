@@ -169,11 +169,11 @@ flake8 .
 We welcome contributions to this project! Here's how you can contribute:
 
 ## Fork the repository.
--**Create a new branch for your feature or bugfix.**
--**Make your changes and commit them with clear, concise messages.**
--**Push your changes to your fork.**
--**Open a pull request.**
--**Commit Message Guidelines**
--**feat: Add multilingual FAQ model**
--**fix: Improve translation caching**
--**docs: Update README with API examples**
+- **Create a new branch for your feature or bugfix.**
+- **Make your changes and commit them with clear, concise messages.**
+- **Push your changes to your fork.**
+- **Open a pull request.**
+- **Commit Message Guidelines**
+- **feat: Add multilingual FAQ model**
+- **fix: Improve translation caching**
+- **docs: Update README with API examples**
