@@ -24,14 +24,14 @@ Multi-language support** for FAQs, allowing dynamic translation of content.
 
 ## Installation Steps
 
-### 1. Clone the Repository
+## 1. Clone the Repository
 Clone the repository to your local machine:
 
-```bash
+bash
 git clone https://github.com/your-username/faq-multilingual-django.git
 cd faq-multilingual-django
 
-# 2. Set Up Virtual Environment (Optional)
+## 2. Set Up Virtual Environment (Optional)
 For managing dependencies, it is recommended to set up a Python virtual environment.
 
 For Windows:
@@ -48,28 +48,32 @@ Copy
 Edit
 python3 -m venv venv
 source venv/bin/activate
-3. Install Dependencies
+
+## 3. Install Dependencies
 Install the required Python packages listed in requirements.txt:
 
 bash
 Copy
 Edit
 pip install -r requirements.txt
-4. Apply Migrations
+
+## 4. Apply Migrations
 Set up the database by applying the migrations:
 
 bash
 Copy
 Edit
 python manage.py migrate
-5. Set Up Static and Media Files
+
+## 5. Set Up Static and Media Files
 Collect all static files and set up the media directory:
 
 bash
 Copy
 Edit
 python manage.py collectstatic
-6. Run the Development Server
+
+## 6. Run the Development Server
 Start the development server to run the application locally:
 
 bash
@@ -78,15 +82,17 @@ Edit
 python manage.py runserver
 Visit http://127.0.0.1:8000 to view the app.
 
-Running with Docker
-1. Build the Docker Image
+# Running with Docker
+
+## 1. Build the Docker Image
 Use Docker Compose to build the Docker image for the application:
 
 bash
 Copy
 Edit
 docker-compose build
-2. Start the Docker Container
+
+## 2. Start the Docker Container
 Run the container and start the application:
 
 bash
@@ -95,32 +101,36 @@ Edit
 docker-compose up
 You can access the application at http://localhost:8000.
 
-3. Stopping the Docker Container
+## 3. Stopping the Docker Container
 To stop the running container:
 
 bash
 Copy
 Edit
 docker-compose down
-API Usage
+
+# API Usage
 The application provides a REST API to manage FAQs. You can interact with the API using curl, Postman, or any HTTP client.
 
-1. Fetch All FAQs (Default Language - English)
+## 1. Fetch All FAQs (Default Language - English)
 bash
 Copy
 Edit
 curl http://localhost:8000/api/faqs/
-2. Fetch FAQs in Hindi
+
+## 2. Fetch FAQs in Hindi
 bash
 Copy
 Edit
 curl http://localhost:8000/api/faqs/?lang=hi
-3. Fetch FAQs in Bengali
+
+## 3. Fetch FAQs in Bengali
 bash
 Copy
 Edit
 curl http://localhost:8000/api/faqs/?lang=bn
-4. Add a New FAQ
+
+## 4. Add a New FAQ
 To add a new FAQ, make a POST request to the /api/faqs/ endpoint with the following data:
 
 json
@@ -132,13 +142,14 @@ Edit
   "question_hi": "डॉकर क्या है?",
   "question_bn": "ডকার কি?"
 }
-Admin Panel
+
+# Admin Panel
 The Django admin interface allows you to manage FAQs easily.
 
-1. Access the Admin Panel
+## 1. Access the Admin Panel
 Navigate to http://127.0.0.1:8000/admin to log in with your superuser credentials.
 
-2. Create a Superuser (If not created)
+## 2. Create a Superuser (If not created)
 To create a superuser account for accessing the admin panel, run the following:
 
 bash
@@ -147,37 +158,41 @@ Edit
 python manage.py createsuperuser
 Follow the prompts to set up your superuser account.
 
-Caching Mechanism
+# Caching Mechanism
 The application utilizes Redis to cache translations, improving performance by reducing the need to repeatedly request translations from the API.
 
-1. Install Redis
+## 1. Install Redis
 If you're running Redis locally, install and start the Redis server. Alternatively, you can run Redis within a Docker container:
 
 bash
 Copy
 Edit
 docker run -p 6379:6379 redis
-Testing
+
+
+# Testing
 The project includes unit tests to verify the functionality of the API and model methods.
 
-1. Run Unit Tests
+## 1. Run Unit Tests
 Run the tests using pytest:
 
 bash
 Copy
 Edit
 pytest
-2. Check Code Quality
+
+## 2. Check Code Quality
 The code adheres to PEP8 conventions. You can check the code quality with flake8:
 
 bash
 Copy
 Edit
 flake8 .
-Contributing
+
+## Contributing
 We welcome contributions to this project! Here's how you can contribute:
 
-Fork the repository.
+## Fork the repository.
 Create a new branch for your feature or bugfix.
 Make your changes and commit them with clear, concise messages.
 Push your changes to your fork.
