@@ -27,80 +27,96 @@ This project is a Django-based application designed to manage **Frequently Asked
 ## 1. Clone the Repository
 Clone the repository to your local machine:
 
-- **bash**
+```bash
 git clone https://github.com/your-username/faq-multilingual-django.git
 cd faq-multilingual-django
+```
 
 ## 2. Set Up Virtual Environment (Optional)
 For managing dependencies, it is recommended to set up a Python virtual environment.
 
 - **For Windows**:
 ```bash
-    python -m venv venv
-    ```
+python -m venv venv
 venv\Scripts\activate
+```
 
 - **For macOS/Linux**:
-python3 -m venv venv
+```bash
+python -m venv venv
 source venv/bin/activate
+```
+
 
 ## 3. Install Dependencies
 Install the required Python packages listed in requirements.txt:
-
+```bash
 pip install -r requirements.txt
+```
 
 ## 4. Apply Migrations
 Set up the database by applying the migrations:
 
-
+```bash
 python manage.py migrate
+```
 
 ## 5. Set Up Static and Media Files
 Collect all static files and set up the media directory:
 
-
+```bash
 python manage.py collectstatic
+```
 
 ## 6. Run the Development Server
 Start the development server to run the application locally:
-
+```bash
 python manage.py runserver
 Visit http://127.0.0.1:8000 to view the app.
+```
 
 # Running with Docker
 
 ## 1. Build the Docker Image
 Use Docker Compose to build the Docker image for the application:
-
+```bash
 docker-compose build
+```
 
 ## 2. Start the Docker Container
 Run the container and start the application:
 
-
+```bash
 docker-compose up
+```
 You can access the application at http://localhost:8000.
 
 ## 3. Stopping the Docker Container
 To stop the running container:
 
-
+```bash
 docker-compose down
+```
 
 # API Usage
 The application provides a REST API to manage FAQs. You can interact with the API using curl, Postman, or any HTTP client.
 
 ## 1. Fetch All FAQs (Default Language - English)
-
+```bash
 curl http://localhost:8000/api/faqs/
+```
 
 ## 2. Fetch FAQs in Hindi
-
+```bash
 curl http://localhost:8000/api/faqs/?lang=hi
+```
 
 ## 3. Fetch FAQs in Bengali
 
+```bash
+
 curl http://localhost:8000/api/faqs/?lang=bn
+```
 
 ## 4. Add a New FAQ
 To add a new FAQ, make a POST request to the /api/faqs/ endpoint with the following data:
@@ -121,7 +137,9 @@ Navigate to http://127.0.0.1:8000/admin to log in with your superuser credential
 
 ## 2. Create a Superuser (If not created)
 To create a superuser account for accessing the admin panel, run the following:
+```bash
 python manage.py createsuperuser
+```
 Follow the prompts to set up your superuser account.
 
 # Caching Mechanism
