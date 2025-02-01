@@ -35,7 +35,9 @@ cd faq-multilingual-django
 For managing dependencies, it is recommended to set up a Python virtual environment.
 
 - **For Windows**:
-python -m venv venv
+```bash
+    python -m venv venv
+    ```
 venv\Scripts\activate
 
 - **For macOS/Linux**:
