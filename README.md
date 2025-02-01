@@ -147,8 +147,9 @@ The application utilizes Redis to cache translations, improving performance by r
 
 ## 1. Install Redis
 If you're running Redis locally, install and start the Redis server. Alternatively, you can run Redis within a Docker container:
-
+```bash
 docker run -p 6379:6379 redis
+```
 
 
 # Testing
@@ -156,14 +157,16 @@ The project includes unit tests to verify the functionality of the API and model
 
 ## 1. Run Unit Tests
 Run the tests using pytest:
-
+```bash
 pytest
+```
 
 ## 2. Check Code Quality
 The code adheres to PEP8 conventions. You can check the code quality with flake8:
 
-
-flake8 .
+```bash
+flake8
+```
 
 ## Contributing
 We welcome contributions to this project! Here's how you can contribute:
